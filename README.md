@@ -12,7 +12,7 @@ This is a chrome extension for running a selected code in [The Go Playground](ht
 git clone https://github.com/ramenjuniti/clipgo.git
 ```
 
-2. Open the Extension Management page by navigating to [chrome://extensions](chrome://extensions/).
+2. Open the Extension Management page by navigating to `chrome://extensions`.
 
 3. Enable Developer Mode by clicking the toggle switch next to Developer mode.
 
