@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener(message => {
 chrome.contextMenus.create({
   type: "normal",
   id: "clip_go",
-  title: "clip go",
+  title: "Clip Go",
   contexts: ["selection"]
 });
 
