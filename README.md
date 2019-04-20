@@ -1,4 +1,4 @@
-# <img src="https://i.gyazo.com/532cc01852ed06b797535fba2c5f195c.jpg" width=42 align=left> clipgo
+# <img src="https://i.gyazo.com/532cc01852ed06b797535fba2c5f195c.jpg" width=64 align=left> clipgo
 
 This is a chrome extension for running a selected code in [The Go Playground](https://play.golang.org/).
 
