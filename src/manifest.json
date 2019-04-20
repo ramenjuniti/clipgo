@@ -14,7 +14,12 @@
     "scripts": ["background.js"],
     "persistent": false
   },
-  "permissions": ["contextMenus", "tabs", "<all_urls>"],
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "tabs",
+    "https://play.golang.org/"
+  ],
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
