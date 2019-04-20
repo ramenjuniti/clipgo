@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "clip go",
+  "name": "Clip Go",
   "author": "ramenjuniti",
-  "description": "選択したgolangのコードをGo Playgroundで実行します",
-  "version": "1.0",
+  "description": "This is a chrome extension for running a selected code in The Go Playground",
+  "version": "0.0.1",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
