@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "clip go",
+  "author": "ramenjuniti",
+  "description": "選択したgolangのコードをGo Playgroundで実行します",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contents.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": ["contextMenus", "tabs", "<all_urls>"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
