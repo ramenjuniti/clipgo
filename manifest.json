@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Clip Go",
   "author": "ramenjuniti",
-  "description": "This is a chrome extension for running a selected code in The Go Playground",
+  "description": "This is a chrome extension for running a selected golang code in The Go Playground",
   "version": "0.0.1",
   "content_scripts": [
     {
