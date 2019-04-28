@@ -2,11 +2,17 @@
 
 # Clip Go
 
+![](https://img.shields.io/chrome-web-store/users/khkfegmjjbijinlbmffohmiofhpnjlja.svg)
+
 This is a chrome extension for running a selected golang code in The Go Playground. [The Go Playground](https://play.golang.org/).
 
 ## Install
 
-### Clone this repository
+### For Users
+
+[![](https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_340x96.png)](https://chrome.google.com/webstore/detail/clip-go/khkfegmjjbijinlbmffohmiofhpnjlja)
+
+### For Developers
 
 1. Enter below command on your shell.
 
@@ -20,7 +26,7 @@ git clone https://github.com/ramenjuniti/clipgo.git
 
    [![Image from Gyazo](https://i.gyazo.com/80b67452913a6147aa89cd05c6c78f4a.png)](https://gyazo.com/80b67452913a6147aa89cd05c6c78f4a)
 
-4) Click the LOAD UNPACKED button and select the extension directory.
+4. Click the LOAD UNPACKED button and select the extension directory.
 
    [![Image from Gyazo](https://i.gyazo.com/837cf2b32fbe485cb1b360aa31e052c3.png)](https://gyazo.com/837cf2b32fbe485cb1b360aa31e052c3)
 
