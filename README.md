@@ -6,6 +6,8 @@
 
 This is a chrome extension for running a selected golang code in The Go Playground. [The Go Playground](https://play.golang.org/).
 
+[![Image from Gyazo](https://i.gyazo.com/b5a55cee8b61acb4388ed0aa767a55d4.gif)](https://gyazo.com/b5a55cee8b61acb4388ed0aa767a55d4)
+
 ## Install
 
 ### For Users
