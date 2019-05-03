@@ -2,6 +2,7 @@
 
 # Clip Go
 
+![Chrome Web Store](https://img.shields.io/chrome-web-store/v/khkfegmjjbijinlbmffohmiofhpnjlja.svg)
 ![](https://img.shields.io/chrome-web-store/users/khkfegmjjbijinlbmffohmiofhpnjlja.svg)
 
 This is a chrome extension for running a selected golang code in [The Go Playground](https://play.golang.org/).
