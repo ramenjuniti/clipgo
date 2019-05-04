@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener(message => {
   if (result.err) {
     err = result.err;
     chrome.contextMenus.update(id, {
-      title: `${title} Error[${err}]`,
+      title: `${title} [Error] ${err}`,
       enabled: false
     });
   } else {
