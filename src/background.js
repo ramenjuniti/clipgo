@@ -1,14 +1,33 @@
+const id = "clip_go";
+const title = "Clip Go";
+const type = "normal";
+const contexts = ["selection"];
+
 let code;
+let err;
 
 chrome.runtime.onMessage.addListener(message => {
-  code = message.code;
+  const result = codeFormat(message.code);
+  if (result.err) {
+    err = result.err;
+    chrome.contextMenus.update(id, {
+      title: `${title} [Error] ${err}`,
+      enabled: false
+    });
+  } else {
+    code = result.newCode;
+    chrome.contextMenus.update(id, {
+      title: title,
+      enabled: true
+    });
+  }
 });
 
 chrome.contextMenus.create({
-  type: "normal",
-  id: "clip_go",
-  title: "Clip Go",
-  contexts: ["selection"]
+  id: id,
+  title: title,
+  type: type,
+  contexts: contexts
 });
 
 chrome.contextMenus.onClicked.addListener(() => {
