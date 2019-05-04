@@ -1,3 +1,3 @@
-document.addEventListener("contextmenu", () => {
+document.addEventListener("selectionchange", () => {
   chrome.runtime.sendMessage({ code: window.getSelection().toString() });
 });
