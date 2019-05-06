@@ -1,0 +1,23 @@
+{
+  "name": "clipgo",
+  "version": "1.0.0",
+  "description": "This is a chrome extension for running a selected golang code in The Go Playground.",
+  "scripts": {
+    "go-wasm": "GOOS=js GOARCH=wasm go build -o main.wasm src/background/go/main.go",
+    "build": "webpack && yarn go-wasm && mv main.wasm build && cp src/manifest.json src/icons/*.png build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramenjuniti/clipgo.git"
+  },
+  "author": "ramenjuniti <ramenjuniti@gmail.com> (https://github.com/ramenjuniti/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ramenjuniti/clipgo/issues"
+  },
+  "homepage": "https://github.com/ramenjuniti/clipgo#readme",
+  "devDependencies": {
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.2"
+  }
+}
