@@ -43,6 +43,12 @@ yarn build
 
    [![Image from Gyazo](https://i.gyazo.com/837cf2b32fbe485cb1b360aa31e052c3.png)](https://gyazo.com/837cf2b32fbe485cb1b360aa31e052c3)
 
+## Test
+
+```
+yarn test
+```
+
 ## LICENSE
 
 This software is released under the MIT License, see LICENSE.
