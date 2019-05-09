@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "This is a chrome extension for running a selected golang code in The Go Playground.",
   "scripts": {
-    "go-wasm": "GOOS=js GOARCH=wasm go build -o main.wasm clipgo/src/background/go",
-    "build": "webpack && yarn go-wasm && mv main.wasm build && cp src/manifest.json src/icons/*.png build",
-    "test": "GOOS=js GOARCH=wasm go test -exec=\"$(go env GOROOT)/misc/wasm/go_js_wasm_exec\" clipgo/src/background/go"
+    "webpack": "webpack"
   },
   "repository": {
     "type": "git",

@@ -29,8 +29,8 @@ brew install yarn
 ```
 git clone https://github.com/ramenjuniti/clipgo.git
 cd clipgo
-yarn
-yarn build
+make install
+make build
 ```
 
 3. Open the Extension Management page by navigating to `chrome://extensions`.
@@ -46,7 +46,7 @@ yarn build
 ## Test
 
 ```
-yarn test
+make test
 ```
 
 ## LICENSE
