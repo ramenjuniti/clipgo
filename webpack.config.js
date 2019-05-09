@@ -4,11 +4,11 @@ module.exports = {
   mode: "production",
   target: "node",
   entry: {
-    contents: path.join(__dirname, "src", "contents", "js", "contents.js"),
+    contents: path.join(__dirname, "src", "contents", "contents.js"),
     background: [
-      path.join(__dirname, "src", "background", "js", "wasm_exec.js"),
-      path.join(__dirname, "src", "background", "js", "init_go.js"),
-      path.join(__dirname, "src", "background", "js", "background.js")
+      path.join(__dirname, "src", "background", "wasm_exec.js"),
+      path.join(__dirname, "src", "background", "init_go.js"),
+      path.join(__dirname, "src", "background", "background.js")
     ]
   },
   output: {
