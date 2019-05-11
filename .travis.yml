@@ -1,0 +1,14 @@
+language: go
+
+go:
+  - 1.12.x
+
+git:
+  depth: 1
+
+before_script:
+  - go install github.com/golangci/golangci-lint/cmd/golangci-lint
+
+script:
+  - golangci-lint run
+  - GOOS=js GOARCH=wasm go test -v -exec="$(GOROOT)/misc/wasm/go_js_wasm_exec" ./...
