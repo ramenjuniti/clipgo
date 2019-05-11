@@ -4,14 +4,12 @@ const type = "normal";
 const contexts = ["selection"];
 
 let code;
-let err;
 
 chrome.runtime.onMessage.addListener(message => {
   const result = codeFormat(message.code);
   if (result.err) {
-    err = result.err;
     chrome.contextMenus.update(id, {
-      title: `${title} [Error] ${err}`,
+      title: `${title} [Error] ${result.err}`,
       enabled: false
     });
   } else {
