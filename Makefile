@@ -4,7 +4,7 @@ install:
 
 .PHONY: test
 test:
-	GOOS=js GOARCH=wasm go test -v -exec="$(GOROOT)/misc/wasm/go_js_wasm_exec" ./...
+	GOOS=js GOARCH=wasm go test -v -exec="$(GOROOT)/misc/wasm/go_js_wasm_exec" clipgo/src/background/
 
 .PHONY: build
 build:
