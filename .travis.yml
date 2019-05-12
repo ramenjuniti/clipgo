@@ -13,7 +13,7 @@ install:
   - nvm install stable
   - nvm use stable
   - npm install
-  - cd $TRAVIS_BUILD_DIR
+  - export PATH=$PATH:$GOROOT/bin
   - export GOPATH=$TRAVIS_BUILD_DIR
 
 before_script:
