@@ -1,14 +1,28 @@
-language: go
+language: node_js, go
+
+node_js:
+  - "11"
 
 go:
   - 1.12.x
 
+cache:
+  directories:
+    - $HOME/.cache/yarn
+    - node_modules
+
 git:
   depth: 1
 
+install:
+  - yarn
+
 before_script:
-  - go install github.com/golangci/golangci-lint/cmd/golangci-lint
+  - go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
 
 script:
   - golangci-lint run
   - GOOS=js GOARCH=wasm go test -v -exec="$(GOROOT)/misc/wasm/go_js_wasm_exec" ./...
+  - yarn webpack
+	- GOOS=js GOARCH=wasm go build -o main.wasm clipgo/src/background
+	- mv main.wasm build && cp src/manifest.json src/icons/*.png build
