@@ -14,6 +14,7 @@ install:
   - nvm use stable
   - npm install
   - export GOPATH=$TRAVIS_BUILD_DIR
+  - go env
 
 before_script:
   - yarn
