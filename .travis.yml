@@ -1,23 +1,21 @@
-language: node_js, go
-
-node_js:
-  - "11"
+language: go
 
 go:
   - 1.12.x
 
-cache:
-  directories:
-    - $HOME/.cache/yarn
-    - node_modules
+cache: yarn
 
 git:
   depth: 1
 
 install:
-  - yarn
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+  - npm install
 
 before_script:
+  - yarn
   - go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
 
 script:
