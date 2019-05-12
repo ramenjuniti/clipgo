@@ -19,6 +19,6 @@ before_script:
   - go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
 
 script:
-  - golangci-lint run src/background/
+  - golangci-lint run ./...
   - make test
   - make build
