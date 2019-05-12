@@ -13,15 +13,14 @@ install:
   - nvm install stable
   - nvm use stable
   - npm install
-  - export PATH=$PATH:$GOROOT/bin
-  - export GOPATH=$TRAVIS_BUILD_DIR
 
 before_script:
   - yarn
-  - curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin
-  - golangci-lint --version
+  - go get -u golang.org/x/tools/cmd/goimports
+  - go get -u github.com/golang/lint/golint
 
 script:
-  - golangci-lint run ./...
+  - diff <(goimports -d .) <(printf "")
+  - diff <(golint ./...) <(printf "")
   - make test
   - make build
