@@ -19,8 +19,6 @@ before_script:
   - go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
 
 script:
-  - golangci-lint run
-  - GOOS=js GOARCH=wasm go test -v -exec="$(GOROOT)/misc/wasm/go_js_wasm_exec" ./...
-  - yarn webpack
-  - GOOS=js GOARCH=wasm go build -o main.wasm clipgo/src/background
-  - mv main.wasm build && cp src/manifest.json src/icons/*.png build
+  - golangci-lint run src/background/
+  - make test
+  - make build
