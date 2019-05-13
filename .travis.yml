@@ -1,0 +1,26 @@
+language: go
+
+go:
+  - 1.12.1
+
+cache: yarn
+
+git:
+  depth: 1
+
+install:
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+  - npm install
+
+before_script:
+  - yarn
+  - go get -u golang.org/x/tools/cmd/goimports
+  - go get -u golang.org/x/lint/golint
+
+script:
+  - diff <(goimports -d .) <(printf "")
+  - diff <(golint ./...) <(printf "")
+  - make test
+  - make build
