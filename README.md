@@ -1,4 +1,4 @@
-<img src="https://i.gyazo.com/532cc01852ed06b797535fba2c5f195c.jpg" width=128>
+<div align="center"><img src="https://i.gyazo.com/532cc01852ed06b797535fba2c5f195c.jpg" width=128></div>
 
 # Clip Go
 
