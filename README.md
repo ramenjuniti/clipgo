@@ -2,6 +2,7 @@
 
 # Clip Go
 
+[![Build Status](https://travis-ci.org/ramenjuniti/clipgo.svg?branch=master)](https://travis-ci.org/ramenjuniti/clipgo)
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/v/khkfegmjjbijinlbmffohmiofhpnjlja.svg)
 ![](https://img.shields.io/chrome-web-store/users/khkfegmjjbijinlbmffohmiofhpnjlja.svg)
 
