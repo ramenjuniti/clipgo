@@ -1,13 +1,24 @@
 .PHONY: install
 install: 
 	yarn
+	go get -u golang.org/x/tools/cmd/goimports
+	go get -u golang.org/x/lint/golint
+
+.PHONY: lint
+lint: 
+	GOOS=js GOARCH=wasm go vet ./src/background
+	golint ./src/background
+
+.PHONY: fmt
+fmt:
+	goimports -w ./src/background
 
 .PHONY: test
-test:
+test: lint fmt
 	GOOS=js GOARCH=wasm go test -v -exec="$(GOROOT)/misc/wasm/go_js_wasm_exec" ./src/background
 
 .PHONY: build
-build:
+build: lint fmt
 	yarn webpack
 	GOOS=js GOARCH=wasm go build -o main.wasm ./src/background
 	mv main.wasm build && cp src/manifest.json src/icons/*.png build
