@@ -10,6 +10,7 @@ install:
   - wget -O go.tar.gz https://dl.google.com/go/go1.12.linux-amd64.tar.gz
   - tar -C ~ -xzf go.tar.gz
   - rm go.tar.gz
+  - export GOROOT=~/go
   - export GOPATH=$TRAVIS_BUILD_DIR
   - export PATH=$GOROOT/bin:$PATH
   - source ~/.nvm/nvm.sh
