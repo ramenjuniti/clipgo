@@ -1,18 +1,21 @@
-language: go
-
-go:
-  - 1.12.1
-
 cache: yarn
 
 git:
   depth: 1
 
 install:
-  - . $HOME/.nvm/nvm.sh
-  - nvm install stable
-  - nvm use stable
-  - npm install
+  - wget https://raw.githubusercontent.com/creationix/nvm/v0.31.0/nvm.sh -O ~/.nvm/nvm.sh
+  - wget -O go.tar.gz https://dl.google.com/go/go1.12.linux-amd64.tar.gz
+  - tar -C ~ -xzf go.tar.gz
+  - rm go.tar.gz
+  - export GOROOT=~/go
+  - export PATH=$GOROOT/bin:$PATH
+  - go version
+  - go env
+  - source ~/.nvm/nvm.sh
+  - nvm install 11
+  - node --version
+  - npm i -g yarn
 
 before_script:
   - yarn
