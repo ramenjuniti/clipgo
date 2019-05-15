@@ -15,7 +15,7 @@ fmt:
 
 .PHONY: test
 test: lint fmt
-	GOOS=js GOARCH=wasm go test -v -exec="$(GOROOT)/misc/wasm/go_js_wasm_exec" ./src/background
+	GOOS=js GOARCH=wasm go test -v -cover -exec="$(GOROOT)/misc/wasm/go_js_wasm_exec" ./src/background
 
 .PHONY: build
 build: lint fmt
