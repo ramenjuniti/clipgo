@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:latest
-      - image: circleci/golang:latest
+      - image: golang:latest
     working_directory: /home/circleci/go/src/github.com/ramenjuniti/clipgo
     steps:
       - checkout
@@ -11,6 +11,10 @@ jobs:
           name: install
           command: |
             make install
+        - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: test
           command: |
