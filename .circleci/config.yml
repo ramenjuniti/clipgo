@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/go:latest
+      - image: circleci/golang:latest
       - image: circleci/node:latest
     working_directory: /home/circleci/go/src/github.com/ramenjuniti/clipgo
     steps:
