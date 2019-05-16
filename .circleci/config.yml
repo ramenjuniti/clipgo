@@ -2,20 +2,11 @@ version: 2
 jobs:
   build:
     docker:
+      - image: circleci/node:latestg
       - image: circleci/golang:latest
     working_directory: /home/circleci/go/src/github.com/ramenjuniti/clipgo
     steps:
       - checkout
-      - run:
-          name: setup
-          command: |
-            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
-            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-            source $BASH_ENV
-            nvm install --lts
-            nvm use --lts
-            npm i -g yarn
       - run:
           name: install
           command: |
