@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.12-node
+    environment:
+      - GOROOT: /home/circleci/go
     working_directory: /home/circleci/go/src/github.com/ramenjuniti/clipgo
     steps:
       - checkout
