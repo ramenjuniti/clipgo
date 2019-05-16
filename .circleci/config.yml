@@ -2,17 +2,11 @@ version: 2
 jobs:
   build:
     docker:
+      - image: circleci/go:latest
       - image: circleci/node:latest
     working_directory: /home/circleci/go/src/github.com/ramenjuniti/clipgo
     steps:
       - checkout
-      - run: wget -O go.tar.gz https://dl.google.com/go/go1.12.linux-amd64.tar.gz
-      - run: tar -C ~ -xzf go.tar.gz
-      - run: rm go.tar.gz
-      - run: export GOROOT=~/go
-      - run: export PATH=$GOROOT/bin:$PATH
-      - run: go version
-      - run: go env
       - run: make install
       - run: make test
       - run: make build
