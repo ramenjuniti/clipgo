@@ -11,10 +11,6 @@ jobs:
           name: install
           command: |
             make install
-        - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: test
           command: |
