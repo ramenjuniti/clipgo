@@ -2,7 +2,7 @@
 
 # Clip Go
 
-[![CircleCI](https://circleci.com/gh/ramenjuniti/clipgo.svg?style=svg)](https://circleci.com/gh/ramenjuniti/clipgo)
+[![CircleCI](https://circleci.com/gh/ramenjuniti/clipgo/tree/develop.svg?style=svg)](https://circleci.com/gh/ramenjuniti/clipgo/tree/develop)
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/v/khkfegmjjbijinlbmffohmiofhpnjlja.svg)
 ![](https://img.shields.io/chrome-web-store/users/khkfegmjjbijinlbmffohmiofhpnjlja.svg)
 
