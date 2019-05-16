@@ -9,11 +9,11 @@ chrome.runtime.onMessage.addListener(message => {
   const result = codeFormat(message.code);
   if (result.err) {
     chrome.contextMenus.update(id, {
-      title: `${title} [Error] ${result.err}`,
+      title: `${title} [Error] ${result.output}`,
       enabled: false
     });
   } else {
-    code = result.newCode;
+    code = result.output;
     chrome.contextMenus.update(id, {
       title: title,
       enabled: true
