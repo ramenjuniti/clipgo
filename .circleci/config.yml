@@ -3,10 +3,12 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.12-node
+    environment:
+      - GOROOT: /usr/local/go
     working_directory: /home/circleci/go/src/github.com/ramenjuniti/clipgo
     steps:
+      - run: echo 'export PATH=${GOROOT}/bin/:${PATH}' >> $BASH_ENV
       - checkout
-      - run: go env
       - run:
           name: install
           command: |
