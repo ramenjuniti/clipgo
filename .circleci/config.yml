@@ -3,11 +3,24 @@ jobs:
   build:
     docker:
       - image: circleci/golang:latest
-      - image: circleci/node:10
     working_directory: /home/circleci/go/src/github.com/ramenjuniti/clipgo
     steps:
       - checkout
-      - run: npm install --global yarn
-      - run: make install
-      - run: make test
-      - run: make build
+      - run:
+          name: setup
+          command: |
+            source /home/circleci/.bashrc
+            nvm install 8
+            npm i -g yarn
+      - run:
+          name: install
+          command: |
+            make install
+      - run:
+          name: test
+          command: |
+            make test
+      - run:
+          name: build
+          command: |
+            make build
