@@ -10,8 +10,9 @@ jobs:
           name: setup
           command: |
             curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-            source /home/circleci/.bashrc
-            source /home/circleci/.bash_profile
+            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+            source $BASH_ENV
             nvm install --lts
             nvm use --lts
             npm i -g yarn
