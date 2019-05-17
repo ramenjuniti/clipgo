@@ -8,6 +8,7 @@
 ![](https://img.shields.io/chrome-web-store/users/khkfegmjjbijinlbmffohmiofhpnjlja.svg)
 
 This is a chrome extension for running a selected golang code in [The Go Playground](https://play.golang.org/).
+The code validation and formatting use [go/format](https://golang.org/pkg/go/format/).
 
 [![Image from Gyazo](https://i.gyazo.com/b5a55cee8b61acb4388ed0aa767a55d4.gif)](https://gyazo.com/b5a55cee8b61acb4388ed0aa767a55d4)
 
