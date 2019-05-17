@@ -5,6 +5,75 @@ import (
 	"testing"
 )
 
+var tests = []struct {
+	name   string
+	input  string
+	output string
+	err    bool
+}{
+	{
+		name: "success1",
+		input: "" + // 見易さのため
+			`package main` + "\n" +
+			"\n" +
+			`import "fmt"` + "\n" +
+			"\n" +
+			`func main() {` + "\n" +
+			`	fmt.Println("Hello, 世界")` + "\n" +
+			`}` + "\n",
+		output: "" +
+			`package main` + "\n" +
+			"\n" +
+			`import "fmt"` + "\n" +
+			"\n" +
+			`func main() {` + "\n" +
+			`	fmt.Println("Hello, 世界")` + "\n" +
+			`}` + "\n",
+		err: false,
+	},
+	{
+		name: "success2",
+		input: "" +
+			`package main` + "\n" +
+			`import "fmt"` + "\n" +
+			`func main() {` + "\n" +
+			`	fmt.Println("Hello, 世界")` + "\n" +
+			`}` + "\n",
+		output: "" +
+			`package main` + "\n" +
+			"\n" +
+			`import "fmt"` + "\n" +
+			"\n" +
+			`func main() {` + "\n" +
+			`	fmt.Println("Hello, 世界")` + "\n" +
+			`}` + "\n",
+		err: false,
+	},
+	{
+		name: "failure1",
+		input: "" +
+			`package main` + "\n" +
+			"\n" +
+			`import "fmt"` + "\n" +
+			"\n" +
+			`func main() {` + "\n" +
+			`	fmt.Println("Hello, 世界")` + "\n",
+		output: "6:31: expected '}', found 'EOF'",
+		err:    true,
+	},
+	{
+		name: "failure2",
+		input: "" +
+			`package main` + "\n" +
+			"\n" +
+			`import "fmt"` + "\n" +
+			"\n" +
+			`func main() {` + "\n",
+		output: "5:15: expected '}', found 'EOF'",
+		err:    true,
+	},
+}
+
 func TestRegisterCallback(t *testing.T) {
 	t.Run("failure", func(t *testing.T) {
 		defer func() {
@@ -32,74 +101,6 @@ func TestRegisterCallback(t *testing.T) {
 
 func TestCodeFormat(t *testing.T) {
 	this := js.ValueOf(nil)
-	tests := []struct {
-		name   string
-		input  string
-		output string
-		err    bool
-	}{
-		{
-			name: "success1",
-			input: "" + // 見易さのため
-				`package main` + "\n" +
-				"\n" +
-				`import "fmt"` + "\n" +
-				"\n" +
-				`func main() {` + "\n" +
-				`	fmt.Println("Hello, 世界")` + "\n" +
-				`}` + "\n",
-			output: "" +
-				`package main` + "\n" +
-				"\n" +
-				`import "fmt"` + "\n" +
-				"\n" +
-				`func main() {` + "\n" +
-				`	fmt.Println("Hello, 世界")` + "\n" +
-				`}` + "\n",
-			err: false,
-		},
-		{
-			name: "success2",
-			input: "" +
-				`package main` + "\n" +
-				`import "fmt"` + "\n" +
-				`func main() {` + "\n" +
-				`	fmt.Println("Hello, 世界")` + "\n" +
-				`}` + "\n",
-			output: "" +
-				`package main` + "\n" +
-				"\n" +
-				`import "fmt"` + "\n" +
-				"\n" +
-				`func main() {` + "\n" +
-				`	fmt.Println("Hello, 世界")` + "\n" +
-				`}` + "\n",
-			err: false,
-		},
-		{
-			name: "failure1",
-			input: "" +
-				`package main` + "\n" +
-				"\n" +
-				`import "fmt"` + "\n" +
-				"\n" +
-				`func main() {` + "\n" +
-				`	fmt.Println("Hello, 世界")` + "\n",
-			output: "6:31: expected '}', found 'EOF'",
-			err:    true,
-		},
-		{
-			name: "failure2",
-			input: "" +
-				`package main` + "\n" +
-				"\n" +
-				`import "fmt"` + "\n" +
-				"\n" +
-				`func main() {` + "\n",
-			output: "5:15: expected '}', found 'EOF'",
-			err:    true,
-		},
-	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
@@ -115,74 +116,6 @@ func TestCodeFormat(t *testing.T) {
 
 func TestJsCallCodeFormat(t *testing.T) {
 	registerCallback()
-	tests := []struct {
-		name   string
-		input  string
-		output string
-		err    bool
-	}{
-		{
-			name: "success1",
-			input: "" +
-				`package main` + "\n" +
-				"\n" +
-				`import "fmt"` + "\n" +
-				"\n" +
-				`func main() {` + "\n" +
-				`	fmt.Println("Hello, 世界")` + "\n" +
-				`}` + "\n",
-			output: "" +
-				`package main` + "\n" +
-				"\n" +
-				`import "fmt"` + "\n" +
-				"\n" +
-				`func main() {` + "\n" +
-				`	fmt.Println("Hello, 世界")` + "\n" +
-				`}` + "\n",
-			err: false,
-		},
-		{
-			name: "success2",
-			input: "" +
-				`package main` + "\n" +
-				`import "fmt"` + "\n" +
-				`func main() {` + "\n" +
-				`	fmt.Println("Hello, 世界")` + "\n" +
-				`}` + "\n",
-			output: "" +
-				`package main` + "\n" +
-				"\n" +
-				`import "fmt"` + "\n" +
-				"\n" +
-				`func main() {` + "\n" +
-				`	fmt.Println("Hello, 世界")` + "\n" +
-				`}` + "\n",
-			err: false,
-		},
-		{
-			name: "failure1",
-			input: "" +
-				`package main` + "\n" +
-				"\n" +
-				`import "fmt"` + "\n" +
-				"\n" +
-				`func main() {` + "\n" +
-				`	fmt.Println("Hello, 世界")` + "\n",
-			output: "6:31: expected '}', found 'EOF'",
-			err:    true,
-		},
-		{
-			name: "failure2",
-			input: "" +
-				`package main` + "\n" +
-				"\n" +
-				`import "fmt"` + "\n" +
-				"\n" +
-				`func main() {` + "\n",
-			output: "5:15: expected '}', found 'EOF'",
-			err:    true,
-		},
-	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
