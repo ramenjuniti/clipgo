@@ -22,19 +22,19 @@ The code validation and formatting use [go/format](https://golang.org/pkg/go/for
 
 1. Setup for macOS
 
-```
-brew install go
-brew install yarn
-```
+   ```
+   brew install go
+   brew install yarn
+   ```
 
 2. Clone this repository and build.
 
-```
-git clone https://github.com/ramenjuniti/clipgo.git
-cd clipgo
-make install
-make build
-```
+   ```
+   git clone https://github.com/ramenjuniti/clipgo.git
+   cd clipgo
+   make install
+   make build
+   ```
 
 3. Open the Extension Management page by navigating to `chrome://extensions`.
 
