@@ -20,8 +20,8 @@ test: lint fmt
 .PHONY: build
 build: lint fmt
 	yarn webpack
-	GOOS=js GOARCH=wasm go build -o main.wasm ./src/background
-	mv main.wasm build && cp src/manifest.json src/icons/*.png build
+	GOOS=js GOARCH=wasm go build -o formatter.wasm ./src/background
+	mv formatter.wasm build && cp src/manifest.json src/icons/*.png build
 
 .PHONY: clean
 clean:

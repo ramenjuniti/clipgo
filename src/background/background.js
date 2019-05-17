@@ -6,7 +6,7 @@ const contexts = ["selection"];
 let code;
 
 chrome.runtime.onMessage.addListener(message => {
-  const result = codeFormat(message.code);
+  const result = formatter(message.code);
   if (result.err) {
     chrome.contextMenus.update(id, {
       title: `${title} [Error] ${result.output}`,

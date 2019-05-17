@@ -79,11 +79,11 @@ func TestRegisterCallback(t *testing.T) {
 		defer func() {
 			err := recover()
 			if err == nil {
-				t.Errorf("got err = %v, want err = syscall/js: Value.Call: property codeFormat is not a function, got undefined", err)
+				t.Errorf("got err = %v, want err = syscall/js: Value.Call: property formatter is not a function, got undefined", err)
 			}
 		}()
 
-		js.Global().Call("codeFormat", "hoge")
+		js.Global().Call("formatter", "hoge")
 	})
 
 	t.Run("Success", func(t *testing.T) {
@@ -95,16 +95,16 @@ func TestRegisterCallback(t *testing.T) {
 		}()
 
 		registerCallback()
-		js.Global().Call("codeFormat", "hoge")
+		js.Global().Call("formatter", "hoge")
 	})
 }
 
-func TestCodeFormat(t *testing.T) {
+func TestFormatter(t *testing.T) {
 	this := js.ValueOf(nil)
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			got := codeFormat(this, []js.Value{js.ValueOf(test.input)}).(map[string]interface{})
+			got := formatter(this, []js.Value{js.ValueOf(test.input)}).(map[string]interface{})
 			if got["err"] != test.err {
 				t.Errorf("got err = %v, want err = %v", got["err"], test.err)
 			} else if got["output"] != test.output {
@@ -114,12 +114,12 @@ func TestCodeFormat(t *testing.T) {
 	}
 }
 
-func TestJsCallCodeFormat(t *testing.T) {
+func TestJsCallFormatter(t *testing.T) {
 	registerCallback()
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			got := js.Global().Call("codeFormat", test.input)
+			got := js.Global().Call("formatter", test.input)
 			if got.Get("err").Bool() != test.err {
 				t.Errorf("got err = %v, want err = %v", got.Get("err").Bool(), test.err)
 			} else if got.Get("output").String() != test.output {

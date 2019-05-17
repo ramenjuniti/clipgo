@@ -9,7 +9,7 @@ type error interface {
 	Error() string
 }
 
-func codeFormat(this js.Value, args []js.Value) interface{} {
+func formatter(this js.Value, args []js.Value) interface{} {
 	code := args[0].String()
 	newCode, err := format.Source([]byte(code))
 	if err != nil {
@@ -19,7 +19,7 @@ func codeFormat(this js.Value, args []js.Value) interface{} {
 }
 
 func registerCallback() {
-	js.Global().Set("codeFormat", js.FuncOf(codeFormat))
+	js.Global().Set("formatter", js.FuncOf(formatter))
 }
 
 func main() {
