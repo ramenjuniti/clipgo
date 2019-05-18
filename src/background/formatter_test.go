@@ -1,31 +1,76 @@
 package main
 
 import (
-	"io/ioutil"
-	"path/filepath"
 	"syscall/js"
 	"testing"
 )
 
 var tests = []struct {
-	name string
-	err  bool
+	name   string
+	input  string
+	output string
+	err    bool
 }{
 	{
 		name: "success1",
-		err:  false,
+		input: "" + // 見易さのため
+			`package main` + "\n" +
+			"\n" +
+			`import "fmt"` + "\n" +
+			"\n" +
+			`func main() {` + "\n" +
+			`	fmt.Println("Hello, 世界")` + "\n" +
+			`}` + "\n",
+		output: "" +
+			`package main` + "\n" +
+			"\n" +
+			`import "fmt"` + "\n" +
+			"\n" +
+			`func main() {` + "\n" +
+			`	fmt.Println("Hello, 世界")` + "\n" +
+			`}` + "\n",
+		err: false,
 	},
 	{
 		name: "success2",
-		err:  false,
+		input: "" +
+			`package main` + "\n" +
+			`import "fmt"` + "\n" +
+			`func main() {` + "\n" +
+			`	fmt.Println("Hello, 世界")` + "\n" +
+			`}` + "\n",
+		output: "" +
+			`package main` + "\n" +
+			"\n" +
+			`import "fmt"` + "\n" +
+			"\n" +
+			`func main() {` + "\n" +
+			`	fmt.Println("Hello, 世界")` + "\n" +
+			`}` + "\n",
+		err: false,
 	},
 	{
 		name: "failure1",
-		err:  true,
+		input: "" +
+			`package main` + "\n" +
+			"\n" +
+			`import "fmt"` + "\n" +
+			"\n" +
+			`func main() {` + "\n" +
+			`	fmt.Println("Hello, 世界")` + "\n",
+		output: "6:31: expected '}', found 'EOF'",
+		err:    true,
 	},
 	{
 		name: "failure2",
-		err:  true,
+		input: "" +
+			`package main` + "\n" +
+			"\n" +
+			`import "fmt"` + "\n" +
+			"\n" +
+			`func main() {` + "\n",
+		output: "5:15: expected '}', found 'EOF'",
+		err:    true,
 	},
 }
 
@@ -59,16 +104,11 @@ func TestFormatter(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			input := filepath.Join("testdata", "formatter", "input", test.name+".golden")
-			output := filepath.Join("testdata", "formatter", "output", test.name+".golden")
-			inbuf, _ := ioutil.ReadFile(input)
-			outbuf, _ := ioutil.ReadFile(output)
-			got := formatter(this, []js.Value{js.ValueOf(string(inbuf))}).(map[string]interface{})
-
+			got := formatter(this, []js.Value{js.ValueOf(test.input)}).(map[string]interface{})
 			if got["err"] != test.err {
 				t.Errorf("got err = %v, want err = %v", got["err"], test.err)
-			} else if got["output"] != string(outbuf) {
-				t.Errorf("got output = %v, want output = %v", got["output"], string(outbuf))
+			} else if got["output"] != test.output {
+				t.Errorf("got output = %v, want output = %v", got["output"], test.output)
 			}
 		})
 	}
@@ -79,16 +119,11 @@ func TestJsCallFormatter(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			input := filepath.Join("testdata", "formatter", "input", test.name+".golden")
-			output := filepath.Join("testdata", "formatter", "output", test.name+".golden")
-			inbuf, _ := ioutil.ReadFile(input)
-			outbuf, _ := ioutil.ReadFile(output)
-			got := js.Global().Call("formatter", string(inbuf))
-
+			got := js.Global().Call("formatter", test.input)
 			if got.Get("err").Bool() != test.err {
 				t.Errorf("got err = %v, want err = %v", got.Get("err").Bool(), test.err)
-			} else if got.Get("output").String() != string(outbuf) {
-				t.Errorf("got output = %v, want output = %v", got.Get("output").String(), string(outbuf))
+			} else if got.Get("output").String() != test.output {
+				t.Errorf("got output = %v, want output = %v", got.Get("output").String(), test.output)
 			}
 		})
 	}
