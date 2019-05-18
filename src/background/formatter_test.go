@@ -63,8 +63,8 @@ func TestFormatter(t *testing.T) {
 			output := filepath.Join("testdata", "formatter", "output", test.name+".golden")
 			inbuf, _ := ioutil.ReadFile(input)
 			outbuf, _ := ioutil.ReadFile(output)
-
 			got := formatter(this, []js.Value{js.ValueOf(string(inbuf))}).(map[string]interface{})
+
 			if got["err"] != test.err {
 				t.Errorf("got err = %v, want err = %v", got["err"], test.err)
 			} else if got["output"] != string(outbuf) {
@@ -83,8 +83,8 @@ func TestJsCallFormatter(t *testing.T) {
 			output := filepath.Join("testdata", "formatter", "output", test.name+".golden")
 			inbuf, _ := ioutil.ReadFile(input)
 			outbuf, _ := ioutil.ReadFile(output)
-
 			got := js.Global().Call("formatter", string(inbuf))
+
 			if got.Get("err").Bool() != test.err {
 				t.Errorf("got err = %v, want err = %v", got.Get("err").Bool(), test.err)
 			} else if got.Get("output").String() != string(outbuf) {
