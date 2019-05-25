@@ -14,7 +14,7 @@ This is a chrome extension for running a selected golang code in [The Go Playgro
 A code validation and formatting use [go/format](https://golang.org/pkg/go/format/).
 
 <div align="center">
-  <img src="https://i.gyazo.com/b5a55cee8b61acb4388ed0aa767a55d4.gif">
+  <img src="https://i.gyazo.com/1fd97061c46f258b1deb6d139e6f07b2.gif">
 </div>
 
 ## Dependency
