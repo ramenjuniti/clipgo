@@ -34,7 +34,7 @@ func TestRegisterCallback(t *testing.T) {
 		defer func() {
 			err := recover()
 			if err == nil {
-				t.Errorf("got err = %v, want err = syscall/js: Value.Call: property formatter is not a function, got undefined", err)
+				t.Errorf("got err: %v, want err: syscall/js: Value.Call: property formatter is not a function, got undefined", err)
 			}
 		}()
 
@@ -45,7 +45,7 @@ func TestRegisterCallback(t *testing.T) {
 		defer func() {
 			err := recover()
 			if err != nil {
-				t.Errorf("got err = %v, want err = <nil>", err)
+				t.Errorf("got err: %v, want err: <nil>", err)
 			}
 		}()
 
@@ -68,7 +68,7 @@ func TestFormatter(t *testing.T) {
 			if got["err"] != test.err {
 				t.Errorf("got err = %v, want err = %v", got["err"], test.err)
 			} else if got["output"] != string(outbuf) {
-				t.Errorf("got output = %v, want output = %v", got["output"], string(outbuf))
+				t.Errorf("got output: %v, want output: %v", got["output"], string(outbuf))
 			}
 		})
 	}
@@ -88,7 +88,7 @@ func TestJsCallFormatter(t *testing.T) {
 			if got.Get("err").Bool() != test.err {
 				t.Errorf("got err = %v, want err = %v", got.Get("err").Bool(), test.err)
 			} else if got.Get("output").String() != string(outbuf) {
-				t.Errorf("got output = %v, want output = %v", got.Get("output").String(), string(outbuf))
+				t.Errorf("got output: %v, want output: %v", got.Get("output").String(), string(outbuf))
 			}
 		})
 	}
