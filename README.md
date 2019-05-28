@@ -23,8 +23,6 @@ A code validation and formatting use [go/format](https://golang.org/pkg/go/forma
 
 ## Install
 
-**v1.1.0 is pending review (5/25)**
-
 ### For Users
 
 [![](https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_340x96.png)](https://chrome.google.com/webstore/detail/clip-go/khkfegmjjbijinlbmffohmiofhpnjlja)
