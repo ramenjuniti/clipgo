@@ -27,7 +27,7 @@ A code validation and formatting use [go/format](https://golang.org/pkg/go/forma
 
 [![](https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_340x96.png)](https://chrome.google.com/webstore/detail/clip-go/khkfegmjjbijinlbmffohmiofhpnjlja)
 
-** And reload your browser **
+**And reload your browser**
 
 ### For Developers
 
